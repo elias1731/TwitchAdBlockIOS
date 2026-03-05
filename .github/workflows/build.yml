@@ -22,6 +22,15 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Run cleanup and generate new tweak
+        run: |
+          if [ -f "setup_new_tweak.py" ]; then
+            python3 setup_new_tweak.py
+          else
+            echo "setup_new_tweak.py not found."
+            exit 1
+          fi
+
       - name: Get package info
         id: package_info
         run: |
